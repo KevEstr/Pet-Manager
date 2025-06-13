@@ -51,7 +51,11 @@ export default function Register() {
 
         <h2 className="text-2xl font-bold text-blue-900 mb-8">CREATE A NEW ACCOUNT</h2>
 
-        <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
+        <form
+          onSubmit={handleSubmit}
+          className="grid grid-cols-2 gap-4"
+          role="form"
+        >
           <div>
             <label htmlFor="username" className="block text-blue-900 mb-2">
               Username
