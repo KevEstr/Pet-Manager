@@ -3,20 +3,22 @@ import { Users, ShoppingBag, ShoppingCart, Tag, BarChart3 } from "lucide-react"
 
 export default function Dashboard() {
   const stats = [
-    { title: "Total Usuarios", value: "124", icon: <Users size={24} />, color: "bg-blue-100 text-blue-600" },
+    { id: 'users', title: "Total Usuarios", value: "124", icon: <Users size={24} />, color: "bg-blue-100 text-blue-600" },
     {
+      id: 'monthly-sales',
       title: "Ventas Mensuales",
       value: "$12,543",
       icon: <ShoppingBag size={24} />,
       color: "bg-green-100 text-green-600",
     },
     {
+      id: 'monthly-purchases',
       title: "Compras Mensuales",
       value: "$8,234",
       icon: <ShoppingCart size={24} />,
       color: "bg-purple-100 text-purple-600",
     },
-    { title: "Productos", value: "532", icon: <Tag size={24} />, color: "bg-orange-100 text-orange-600" },
+    { id: 'products', title: "Productos", value: "532", icon: <Tag size={24} />, color: "bg-orange-100 text-orange-600" },
   ]
 
   const recentActivity = [
@@ -43,8 +45,8 @@ export default function Dashboard() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        {stats.map((stat, index) => (
-          <div key={index} className="bg-white rounded-lg shadow-md p-6">
+        {stats.map((stat) => (
+          <div key={stat.id} className="bg-white rounded-lg shadow-md p-6">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg font-semibold text-blue-900">{stat.title}</h2>
               <div className={`p-2 rounded-full ${stat.color}`}>{stat.icon}</div>

@@ -48,7 +48,7 @@ export default function Home() {
         <div className="w-full max-w-md px-8">
           <h2 className="text-2xl font-bold text-blue-900 mb-8">LOG IN TO YOUR ACCOUNT</h2>
 
-          <form onSubmit={handleSubmit} role="form">
+          <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label htmlFor="username" className="block text-blue-900 mb-2">
                 Username

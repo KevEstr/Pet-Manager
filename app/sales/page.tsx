@@ -16,7 +16,7 @@ type Sale = {
 
 export default function Sales() {
   // Datos de ejemplo para la tabla
-  const [sales, setSales] = useState<Sale[]>([
+  const sales: Sale[] = [
     { id: "1", date: "2023-05-15", customer: "Juan Pérez", total: 120.5, status: "Completed" },
     { id: "2", date: "2023-05-14", customer: "María García", total: 85.75, status: "Completed" },
     { id: "3", date: "2023-05-13", customer: "Carlos López", total: 200.0, status: "Pending" },
@@ -24,7 +24,7 @@ export default function Sales() {
     { id: "5", date: "2023-05-11", customer: "Pedro Sánchez", total: 95.0, status: "Cancelled" },
     { id: "6", date: "2023-05-10", customer: "Laura Rodríguez", total: 180.3, status: "Completed" },
     { id: "7", date: "2023-05-09", customer: "Miguel Fernández", total: 220.45, status: "Pending" },
-  ])
+  ]
 
   const [searchTerm, setSearchTerm] = useState("")
   const [showNewSaleForm, setShowNewSaleForm] = useState(false)

@@ -34,6 +34,12 @@ export function Sidebar() {
     }
   ]
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      closeSidebar()
+    }
+  }
+
   return (
     <>
       {/* Overlay para móvil */}
@@ -41,16 +47,23 @@ export function Sidebar() {
         <div 
           className="fixed inset-0 bg-black/50 z-40 lg:hidden"
           onClick={closeSidebar}
+          role="presentation"
+          aria-hidden="true"
         />
       )}
 
       {/* Sidebar */}
-      <aside className={`
-        fixed lg:static inset-y-0 left-0 z-50
-        w-64 bg-white border-r border-gray-200
-        transform transition-transform duration-300 ease-in-out
-        ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
-      `}>
+      <aside 
+        className={`
+          fixed lg:static inset-y-0 left-0 z-50
+          w-64 bg-white border-r border-gray-200
+          transform transition-transform duration-300 ease-in-out
+          ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+        `}
+        role="navigation"
+        aria-label="Main navigation"
+        onKeyDown={handleKeyDown}
+      >
         {/* Logo y botón cerrar */}
         <div className="flex items-center justify-between p-4 border-b border-gray-200">
           <div className="w-16 h-16">
@@ -65,13 +78,14 @@ export function Sidebar() {
           <button 
             onClick={closeSidebar}
             className="lg:hidden p-2 hover:bg-gray-100 rounded-md"
+            aria-label="Close sidebar"
           >
             <X size={24} className="text-gray-500" />
           </button>
         </div>
 
         {/* Navigation */}
-        <nav className="flex-1 p-4">
+        <nav className="flex-1 p-4" aria-label="Main menu">
           <ul className="space-y-2">
             {menuItems.map((item) => {
               const isActive = pathname === item.href
@@ -90,8 +104,9 @@ export function Sidebar() {
                         ? "bg-sky-100 text-blue-900" 
                         : "text-gray-500 hover:bg-sky-50 hover:text-blue-900"
                     }`}
+                    aria-current={isActive ? 'page' : undefined}
                   >
-                    <item.icon className="h-5 w-5" />
+                    <item.icon className="h-5 w-5" aria-hidden="true" />
                     {item.title}
                   </Link>
                 </li>
@@ -102,8 +117,11 @@ export function Sidebar() {
 
         {/* Logout */}
         <div className="p-4 border-t border-gray-200">
-          <button className="flex items-center gap-3 w-full rounded-lg px-3 py-2 text-sm text-gray-500 hover:bg-sky-50 hover:text-blue-900 transition-all">
-            <LogOut className="h-5 w-5" />
+          <button 
+            className="flex items-center gap-3 w-full rounded-lg px-3 py-2 text-sm text-gray-500 hover:bg-sky-50 hover:text-blue-900 transition-all"
+            aria-label="Cerrar sesión"
+          >
+            <LogOut className="h-5 w-5" aria-hidden="true" />
             Cerrar Sesión
           </button>
         </div>

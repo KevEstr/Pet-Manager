@@ -3,11 +3,9 @@
 import type React from "react"
 
 import { useState } from "react"
-import { useRouter } from "next/navigation"
 import Link from "next/link"
 
 export default function ForgotPassword() {
-  const router = useRouter()
   const [email, setEmail] = useState("")
   const [submitted, setSubmitted] = useState(false)
 
@@ -24,7 +22,7 @@ export default function ForgotPassword() {
         <h2 className="text-2xl font-bold text-blue-900 mb-6">Recuperar Contraseña</h2>
 
         {!submitted ? (
-          <form onSubmit={handleSubmit} role="form">
+          <form onSubmit={handleSubmit}>
             <div className="mb-6">
               <label htmlFor="email" className="block text-blue-900 mb-2">
                 Email
