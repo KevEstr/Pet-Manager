@@ -3,5 +3,5 @@ projectKey=KevEstr_Pet-Manager
 serverUrl=https://sonarcloud.io
 serverVersion=8.0.0.64410
 dashboardUrl=https://sonarcloud.io/dashboard?id=KevEstr_Pet-Manager
-ceTaskId=AZdrLSAgz15GGxNw4RGC
-ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AZdrLSAgz15GGxNw4RGC
+ceTaskId=AZdrWiK5m7ql83WA28uI
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AZdrWiK5m7ql83WA28uI
