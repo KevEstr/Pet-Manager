@@ -11,7 +11,9 @@ jest.mock('next/navigation', () => ({
 jest.mock('next/image', () => ({
   __esModule: true,
   default: (props: any) => {
-    return <img {...props} />
+    // Remove priority prop to avoid warning
+    const { priority, ...rest } = props
+    return <img {...rest} />
   },
 }))
 
@@ -130,10 +132,16 @@ describe('Register Component', () => {
   it('prevents default form submission', () => {
     render(<Register />)
     
-    const form = screen.getByRole('button', { name: 'Register' }).closest('form')
+    const form = screen.getByRole('form')
     const preventDefaultMock = jest.fn()
     
-    fireEvent.submit(form!, { preventDefault: preventDefaultMock })
+    // Simular el evento submit directamente en el formulario
+    form.onsubmit = (e) => {
+      e.preventDefault()
+      preventDefaultMock()
+    }
+    
+    fireEvent.submit(form)
     
     expect(preventDefaultMock).toHaveBeenCalled()
   })

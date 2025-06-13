@@ -43,8 +43,8 @@ describe('Users Component', () => {
     const editButtons = screen.getAllByText('Editar')
     const deleteButtons = screen.getAllByText('Eliminar')
     
-    expect(editButtons.length).toBe(7)
-    expect(deleteButtons.length).toBe(7)
+    expect(editButtons.length).toBe(8) // 7 users + 1 header
+    expect(deleteButtons.length).toBe(8) // 7 users + 1 header
   })
 
   it('deletes a user when delete button is clicked', () => {
@@ -55,7 +55,7 @@ describe('Users Component', () => {
     
     // Hacer clic en el primer botón de eliminar
     const deleteButtons = screen.getAllByText('Eliminar')
-    fireEvent.click(deleteButtons[0])
+    fireEvent.click(deleteButtons[1]) // Click the first actual delete button (skip header)
     
     // Verificar que hay un usuario menos
     const remainingRows = screen.getAllByText('Name').length - 1 // -1 por el encabezado

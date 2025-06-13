@@ -11,12 +11,9 @@ const customConfig = {
 
   // Indicar qué archivos incluir/excluir en el informe de cobertura
   collectCoverageFrom: [
-    'pages/**/*.{js,jsx,ts,tsx}',
-    'components/**/*.{js,jsx,ts,tsx}',
-    'lib/**/*.{js,jsx,ts,tsx}',
-    // Excluir archivos de configuración de Next.js y definiciones de tipo
-    '!pages/_app.{js,jsx,ts,tsx}',
-    '!pages/_document.{js,jsx,ts,tsx}',
+    'app/**/*.{ts,tsx}',
+    'components/**/*.{ts,tsx}',
+    'lib/**/*.{ts,tsx}',
     '!**/node_modules/**',
     '!**/*.d.ts'
   ],

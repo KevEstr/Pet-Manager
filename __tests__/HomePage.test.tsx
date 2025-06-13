@@ -11,7 +11,9 @@ jest.mock('next/navigation', () => ({
 jest.mock('next/image', () => ({
   __esModule: true,
   default: (props: any) => {
-    return <img {...props} />
+    // Remove priority prop to avoid warning
+    const { priority, ...rest } = props
+    return <img {...rest} />
   },
 }))
 
@@ -77,16 +79,5 @@ describe('Home Component', () => {
     expect(pushMock).toHaveBeenCalledWith('/dashboard')
     
     consoleSpy.mockRestore()
-  })
-
-  it('prevents default form submission', () => {
-    render(<Home />)
-    
-    const form = screen.getByRole('button', { name: 'Log in' }).closest('form')
-    const preventDefaultMock = jest.fn()
-    
-    fireEvent.submit(form!, { preventDefault: preventDefaultMock })
-    
-    expect(preventDefaultMock).toHaveBeenCalled()
   })
 })

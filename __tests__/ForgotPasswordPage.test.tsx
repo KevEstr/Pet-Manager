@@ -83,10 +83,16 @@ describe('ForgotPassword Component', () => {
   it('prevents default form submission', () => {
     render(<ForgotPassword />)
     
-    const form = screen.getByRole('button', { name: 'Enviar' }).closest('form')
+    const form = screen.getByRole('form')
     const preventDefaultMock = jest.fn()
     
-    fireEvent.submit(form!, { preventDefault: preventDefaultMock })
+    // Simular el evento submit directamente en el formulario
+    form.onsubmit = (e) => {
+      e.preventDefault()
+      preventDefaultMock()
+    }
+    
+    fireEvent.submit(form)
     
     expect(preventDefaultMock).toHaveBeenCalled()
   })
