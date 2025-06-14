@@ -34,6 +34,11 @@ describe('ForgotPassword Component', () => {
     expect(screen.getByText('Ingresa tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.')).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Enviar' })).toBeInTheDocument()
     expect(screen.getByText('Volver al inicio de sesión')).toBeInTheDocument()
+    
+    // Verificar específicamente que el formulario está presente
+    const form = screen.getByTestId('forgot-password-form')
+    expect(form).toBeInTheDocument()
+    expect(form).toHaveAttribute('data-testid', 'forgot-password-form')
   })
 
   it('updates email state when input changes', () => {
