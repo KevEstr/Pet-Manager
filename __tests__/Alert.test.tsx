@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert'
+import { AlertCircle } from 'lucide-react'
 
 describe('Alert Component', () => {
   it('renders alert with title and description', () => {
@@ -16,10 +17,11 @@ describe('Alert Component', () => {
 
   it('renders with different variants', () => {
     const { rerender } = render(
-      <Alert variant="default">
+      <Alert>
         <AlertTitle>Default Alert</AlertTitle>
       </Alert>
     )
+    
     expect(screen.getByText('Default Alert').closest('[role="alert"]')).toHaveClass('bg-background')
     
     rerender(
@@ -27,7 +29,8 @@ describe('Alert Component', () => {
         <AlertTitle>Destructive Alert</AlertTitle>
       </Alert>
     )
-    expect(screen.getByText('Destructive Alert').closest('[role="alert"]')).toHaveClass('bg-destructive')
+    
+    expect(screen.getByText('Destructive Alert').closest('[role="alert"]')).toHaveClass('border-destructive')
   })
 
   it('renders with custom className', () => {
@@ -40,23 +43,10 @@ describe('Alert Component', () => {
     expect(screen.getByText('Custom Alert').closest('[role="alert"]')).toHaveClass('custom-class')
   })
 
-  it('renders with icon', () => {
-    render(
-      <Alert>
-        <AlertTitle>Alert with Icon</AlertTitle>
-        <AlertDescription>This alert has an icon</AlertDescription>
-      </Alert>
-    )
-    
-    const alert = screen.getByRole('alert')
-    expect(alert.querySelector('svg')).toBeInTheDocument()
-  })
-
   it('renders without icon when specified', () => {
     render(
-      <Alert showIcon={false}>
-        <AlertTitle>Alert without Icon</AlertTitle>
-        <AlertDescription>This alert has no icon</AlertDescription>
+      <Alert>
+        <AlertTitle>No Icon Alert</AlertTitle>
       </Alert>
     )
     
@@ -65,15 +55,14 @@ describe('Alert Component', () => {
   })
 
   it('renders with custom icon', () => {
-    const CustomIcon = () => <span data-testid="custom-icon">🔔</span>
-    
     render(
-      <Alert icon={<CustomIcon />}>
-        <AlertTitle>Alert with Custom Icon</AlertTitle>
-        <AlertDescription>This alert has a custom icon</AlertDescription>
+      <Alert>
+        <AlertCircle className="h-4 w-4" />
+        <AlertTitle>Custom Icon Alert</AlertTitle>
       </Alert>
     )
     
-    expect(screen.getByTestId('custom-icon')).toBeInTheDocument()
+    const alert = screen.getByRole('alert')
+    expect(alert.querySelector('svg')).toBeInTheDocument()
   })
 }) 

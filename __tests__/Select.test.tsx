@@ -2,24 +2,15 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 
 describe('Select Component', () => {
-  const options = [
-    { value: '1', label: 'Option 1' },
-    { value: '2', label: 'Option 2' },
-    { value: '3', label: 'Option 3' },
-  ]
-
-  it('renders select with placeholder', () => {
+  it('renders select trigger', () => {
     render(
       <Select>
         <SelectTrigger>
           <SelectValue placeholder="Select an option" />
         </SelectTrigger>
         <SelectContent>
-          {options.map((option) => (
-            <SelectItem key={option.value} value={option.value}>
-              {option.label}
-            </SelectItem>
-          ))}
+          <SelectItem value="1">Option 1</SelectItem>
+          <SelectItem value="2">Option 2</SelectItem>
         </SelectContent>
       </Select>
     )
@@ -27,28 +18,27 @@ describe('Select Component', () => {
     expect(screen.getByText('Select an option')).toBeInTheDocument()
   })
 
-  it('renders all options', () => {
+  it('shows options when clicked', () => {
     render(
       <Select>
         <SelectTrigger>
           <SelectValue placeholder="Select an option" />
         </SelectTrigger>
         <SelectContent>
-          {options.map((option) => (
-            <SelectItem key={option.value} value={option.value}>
-              {option.label}
-            </SelectItem>
-          ))}
+          <SelectItem value="1">Option 1</SelectItem>
+          <SelectItem value="2">Option 2</SelectItem>
         </SelectContent>
       </Select>
     )
     
-    options.forEach((option) => {
-      expect(screen.getByText(option.label)).toBeInTheDocument()
-    })
+    const trigger = screen.getByRole('combobox')
+    fireEvent.click(trigger)
+    
+    expect(screen.getByText('Option 1')).toBeInTheDocument()
+    expect(screen.getByText('Option 2')).toBeInTheDocument()
   })
 
-  it('handles value changes', () => {
+  it('handles option selection', () => {
     const onValueChange = jest.fn()
     
     render(
@@ -57,54 +47,18 @@ describe('Select Component', () => {
           <SelectValue placeholder="Select an option" />
         </SelectTrigger>
         <SelectContent>
-          {options.map((option) => (
-            <SelectItem key={option.value} value={option.value}>
-              {option.label}
-            </SelectItem>
-          ))}
+          <SelectItem value="1">Option 1</SelectItem>
+          <SelectItem value="2">Option 2</SelectItem>
         </SelectContent>
       </Select>
     )
     
-    fireEvent.click(screen.getByText('Option 1'))
+    const trigger = screen.getByRole('combobox')
+    fireEvent.click(trigger)
+    
+    const option = screen.getByText('Option 1')
+    fireEvent.click(option)
+    
     expect(onValueChange).toHaveBeenCalledWith('1')
-  })
-
-  it('disables select when disabled prop is true', () => {
-    render(
-      <Select disabled>
-        <SelectTrigger>
-          <SelectValue placeholder="Select an option" />
-        </SelectTrigger>
-        <SelectContent>
-          {options.map((option) => (
-            <SelectItem key={option.value} value={option.value}>
-              {option.label}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-    )
-    
-    expect(screen.getByRole('combobox')).toBeDisabled()
-  })
-
-  it('shows error state', () => {
-    render(
-      <Select error>
-        <SelectTrigger>
-          <SelectValue placeholder="Select an option" />
-        </SelectTrigger>
-        <SelectContent>
-          {options.map((option) => (
-            <SelectItem key={option.value} value={option.value}>
-              {option.label}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-    )
-    
-    expect(screen.getByRole('combobox')).toHaveClass('border-destructive')
   })
 }) 

@@ -1,0 +1,1 @@
+ 2tsXÀhrapp/register/page.tsx

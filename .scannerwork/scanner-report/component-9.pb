@@ -1,0 +1,1 @@
+	 2tsXªhrapp/sales/page.tsx

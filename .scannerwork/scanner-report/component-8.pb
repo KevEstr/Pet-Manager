@@ -1,0 +1,1 @@
+ 2tsXhrapp/sales/loading.tsx
