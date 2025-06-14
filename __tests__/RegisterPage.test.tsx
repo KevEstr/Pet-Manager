@@ -132,7 +132,7 @@ describe('Register Component', () => {
   it('prevents default form submission', () => {
     render(<Register />)
     
-    const form = screen.getByRole('form')
+    const form = screen.getByText('CREATE A NEW ACCOUNT').closest('form')
     const preventDefaultMock = jest.fn()
     
     // Simular el evento submit directamente en el formulario

@@ -34,7 +34,7 @@ export default function NewUser() {
       <div className="max-w-2xl mx-auto bg-white rounded-3xl p-8">
         <h1 className="text-2xl font-bold text-blue-900 mb-6">Crear Nuevo Usuario</h1>
 
-        <form onSubmit={handleSubmit} role="form">
+        <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="name" className="block text-blue-900 mb-2">
               Nombre

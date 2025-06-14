@@ -46,23 +46,25 @@ export function Sidebar() {
       {isOpen && (
         <div 
           className="fixed inset-0 bg-black/50 z-40 lg:hidden"
-          onClick={closeSidebar}
-          role="presentation"
           aria-hidden="true"
-        />
+        >
+          <button
+            onClick={closeSidebar}
+            className="w-full h-full"
+            aria-label="Close sidebar"
+          />
+        </div>
       )}
 
       {/* Sidebar */}
-      <aside 
+      <nav 
         className={`
           fixed lg:static inset-y-0 left-0 z-50
           w-64 bg-white border-r border-gray-200
           transform transition-transform duration-300 ease-in-out
           ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
         `}
-        role="navigation"
         aria-label="Main navigation"
-        onKeyDown={handleKeyDown}
       >
         {/* Logo y botón cerrar */}
         <div className="flex items-center justify-between p-4 border-b border-gray-200">
@@ -77,6 +79,7 @@ export function Sidebar() {
           </div>
           <button 
             onClick={closeSidebar}
+            onKeyDown={handleKeyDown}
             className="lg:hidden p-2 hover:bg-gray-100 rounded-md"
             aria-label="Close sidebar"
           >
@@ -85,7 +88,7 @@ export function Sidebar() {
         </div>
 
         {/* Navigation */}
-        <nav className="flex-1 p-4" aria-label="Main menu">
+        <div className="flex-1 p-4" aria-label="Main menu">
           <ul className="space-y-2">
             {menuItems.map((item) => {
               const isActive = pathname === item.href
@@ -113,7 +116,7 @@ export function Sidebar() {
               )
             })}
           </ul>
-        </nav>
+        </div>
 
         {/* Logout */}
         <div className="p-4 border-t border-gray-200">
@@ -125,7 +128,7 @@ export function Sidebar() {
             Cerrar Sesión
           </button>
         </div>
-      </aside>
+      </nav>
     </>
   )
 }

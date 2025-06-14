@@ -54,7 +54,6 @@ export default function Register() {
         <form
           onSubmit={handleSubmit}
           className="grid grid-cols-2 gap-4"
-          role="form"
         >
           <div>
             <label htmlFor="username" className="block text-blue-900 mb-2">
