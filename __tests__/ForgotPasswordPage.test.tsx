@@ -83,7 +83,7 @@ describe('ForgotPassword Component', () => {
   it('prevents default form submission', () => {
     render(<ForgotPassword />)
     
-    const form = screen.getByText('Recuperar Contraseña').closest('form')
+    const form = screen.getByTestId('forgot-password-form')
     const preventDefaultMock = jest.fn()
     
     // Simular el evento submit directamente en el formulario

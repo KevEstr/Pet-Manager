@@ -22,7 +22,10 @@ export default function ForgotPassword() {
         <h2 className="text-2xl font-bold text-blue-900 mb-6">Recuperar Contraseña</h2>
 
         {!submitted ? (
-          <form onSubmit={handleSubmit}>
+          <form 
+            onSubmit={handleSubmit}
+            data-testid="forgot-password-form"
+          >
             <div className="mb-6">
               <label htmlFor="email" className="block text-blue-900 mb-2">
                 Email

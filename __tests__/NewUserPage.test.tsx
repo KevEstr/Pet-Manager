@@ -99,7 +99,7 @@ describe('NewUser Component', () => {
   it('prevents default form submission', () => {
     render(<NewUser />)
     
-    const form = screen.getByText('Crear Nuevo Usuario').closest('form')
+    const form = screen.getByTestId('new-user-form')
     const preventDefaultMock = jest.fn()
     
     // Simular el evento submit directamente en el formulario

@@ -54,6 +54,7 @@ export default function Register() {
         <form
           onSubmit={handleSubmit}
           className="grid grid-cols-2 gap-4"
+          data-testid="register-form"
         >
           <div>
             <label htmlFor="username" className="block text-blue-900 mb-2">
