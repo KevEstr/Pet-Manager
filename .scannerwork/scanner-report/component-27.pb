@@ -1,1 +1,1 @@
- 2tsXøhrcomponents/ui/chart.tsx
+ 2tsXøhrcomponents/ui/chart.tsx
