@@ -644,16 +644,6 @@ const SidebarMenuBadge = React.forwardRef<
 ))
 SidebarMenuBadge.displayName = "SidebarMenuBadge"
 
-const SidebarMenuSkeleton = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentProps<"div"> & {
-    showIcon?: boolean
-  }
->(({ className, showIcon = false, ...props }, ref) => {
-  // Random width between 50 to 90%.
-
-  }, [])
-
   return (
     <div
       ref={ref}
@@ -750,7 +740,6 @@ export {
   SidebarMenuBadge,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarMenuSkeleton,
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
