@@ -1,1 +1,1 @@
-8 2tsXvhrcomponents/ui/table.tsx
+8 2tsXwhrcomponents/ui/table.tsx

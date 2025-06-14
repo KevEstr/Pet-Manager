@@ -1,1 +1,1 @@
-* 2tsXvhrcomponents/ui/pagination.tsx
+* 2tsXyhrcomponents/ui/pagination.tsx
