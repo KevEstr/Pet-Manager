@@ -11,11 +11,13 @@ const customConfig = {
 
   // Indicar qué archivos incluir/excluir en el informe de cobertura
   collectCoverageFrom: [
-    'app/**/*.{ts,tsx}',
-    'components/**/*.{ts,tsx}',
-    'lib/**/*.{ts,tsx}',
-    '!**/node_modules/**',
-    '!**/*.d.ts'
+    "components/**/*.{js,jsx,ts,tsx}",
+    "lib/**/*.{js,ts}",
+    "app/**/*.{js,jsx,ts,tsx}",
+    "!**/*.d.ts",
+    "!**/node_modules/**",
+    "!**/test{,s}/**",
+    "!**/__tests__/**"
   ],
 
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],

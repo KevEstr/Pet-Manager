@@ -152,6 +152,8 @@ function toast({ ...props }: Toast) {
     })
   const dismiss = () => dispatch({ type: "DISMISS_TOAST", toastId: id })
 
+  const originalOnOpenChange = props.onOpenChange
+
   dispatch({
     type: "ADD_TOAST",
     toast: {
@@ -159,6 +161,9 @@ function toast({ ...props }: Toast) {
       id,
       open: true,
       onOpenChange: (open) => {
+        if (originalOnOpenChange) {
+          originalOnOpenChange(open)
+        }
         if (!open) dismiss()
       },
     },
@@ -191,4 +196,12 @@ function useToast() {
   }
 }
 
-export { useToast, toast }
+// Function to reset state for testing
+function resetToastState() {
+  count = 0
+  memoryState = { toasts: [] }
+  toastTimeouts.clear()
+  listeners.length = 0
+}
+
+export { useToast, toast, resetToastState }
