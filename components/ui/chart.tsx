@@ -18,6 +18,11 @@ export type ChartConfig = {
   )
 }
 
+type CustomCSSProperties = React.CSSProperties & {
+  "--color-bg": string;
+  "--color-border": string;
+}
+
 type ChartContextProps = {
   config: ChartConfig
 }
@@ -227,7 +232,7 @@ const ChartTooltipContent = React.forwardRef<
                           style={{
                             "--color-bg": indicatorColor,
                             "--color-border": indicatorColor,
-                          } as React.CSSProperties}
+                          } as CustomCSSProperties}
                         />
                       )
                     )}
